@@ -1,0 +1,20 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 120px;
+  padding: 0 24px;
+  z-index: 2;
+  position: relative;
+  background: #00800030;
+}
+
+.header ul {
+  display: flex;
+  align-items: center;
+  list-style: none;
+}
+
+.header li {
+  padding-left: 40px;
+}
