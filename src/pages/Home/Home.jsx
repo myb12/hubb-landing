@@ -21,6 +21,7 @@ const Home = () => {
   const [scaleTimeoutId, setScaleTimeoutId] = useState(null);
   const [pathTimeoutId, setPathTimeoutId] = useState(null);
   const [scaleStart, setScaleStart] = useState(false);
+  const [translateFact, setTranslateFact] = useState();
   const svgRef = useRef();
 
   useEffect(() => {
@@ -39,6 +40,10 @@ const Home = () => {
         scaleStart,
         setScaleStart
       );
+
+      setTimeout(() => {
+        setTranslateFact(scrollPosition / 1000);
+      }, 1000);
     };
 
     window.removeEventListener("scroll", onScroll);
@@ -50,7 +55,6 @@ const Home = () => {
     const handleScroll = () => {
       const currentScrollPos = window.scrollY;
       setScrollPosition(currentScrollPos);
-
       setIsScrolledUp(scrollPosition > currentScrollPos);
     };
 
@@ -66,7 +70,16 @@ const Home = () => {
       <div className="hero-section">
         <BannerLeaf svgRef={svgRef} />
         <div className="leaf-text" ref={svgWrapperRef}>
-          <img src={SmallTree} alt="" className="small-leaf" />
+          <img
+            src={SmallTree}
+            alt=""
+            className="small-leaf"
+            style={{
+              transform: `translate3d(-${translateFact * 65}%, -${
+                translateFact * 80
+              }%, 0px) scale(${translateFact + 1}, ${translateFact + 1})`,
+            }}
+          />
         </div>
       </div>
 
@@ -154,3 +167,10 @@ const Home = () => {
 };
 
 export default Home;
+
+// mid
+// translate3d(-8.4188%, -10.3616%, 0px) scale(1.1295, 1.1295)
+//translate3d(-23.2762%, -28.6477%, 0px) scale(1.3581, 1.3581)
+//translate3d(-38.1332%, -46.9331%, 0px) scale(1.5867, 1.5867)
+//translate3d(-52.9906%, -65.2192%, 0px) scale(1.8152, 1.8152)
+//translate(-65%, -80%) scale(2, 2)

@@ -51,6 +51,7 @@ export const handleScaleAnimation = (
   } else {
     clearTimeout(pathTimeoutId);
     const scaleFactor = 2 + scrollPosition / 1000;
+
     const id = setTimeout(() => {
       svgRef.current.style.transform = `scale(${scaleFactor}, ${scaleFactor})`;
       animPath.forEach((each, i) => {
