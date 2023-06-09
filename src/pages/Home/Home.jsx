@@ -10,6 +10,7 @@ import {
 } from "../../utils/animation";
 
 import "./home.css";
+import TextMorph from "../../comonents/TextMorph/TextMorph";
 
 const Home = () => {
   const { ref: svgWrapperRef, inView: svgInView } = useInView({
@@ -80,6 +81,16 @@ const Home = () => {
               }%, 0px) scale(${translateFact + 1}, ${translateFact + 1})`,
             }}
           />
+
+          <div className="text">
+            <h1 className="top-heading">Return to</h1>
+            <TextMorph />
+            <p className="top-desc">
+              Welcome to a tranquil sanctuary, where healing dances with nature,
+              <br />
+              community radiates warmth, and minds evolve endlessly.
+            </p>
+          </div>
         </div>
       </div>
 
