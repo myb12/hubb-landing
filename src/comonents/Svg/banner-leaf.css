@@ -1,0 +1,26 @@
+.cls-1 {
+  fill: none;
+}
+
+.cls-2 {
+  fill: #eba83b;
+}
+
+.cls-3 {
+  filter: url(#drop-shadow-1);
+}
+
+.anim-path {
+  transition: 1500ms all ease-out;
+}
+
+.svg-el {
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  transform-origin: center right;
+  width: 100%;
+  transform: translate(0px, 0px);
+  transition: 3500ms all ease-in-out;
+}

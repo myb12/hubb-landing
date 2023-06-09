@@ -1,49 +1,16 @@
-.main {
-  /* background-image: url("../../assets/images/banner.webp"); */
-  background-position: 50%;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  height: 100vh;
-  left: 0;
-  position: fixed;
-  top: 0;
-  width: 100%;
+.hero-section {
+  transition: 10s all linear;
+  height: calc(100vh - 120px);
 }
 
 .leaf-text {
-  align-items: center;
-  display: flex;
-  height: 100%;
   position: relative;
-  width: 100%;
 }
 
 .small-leaf {
-  height: 88.35%;
-  left: 0;
-  position: absolute;
-  top: 10%;
-  transform: translate(0) scale(1);
-  width: 27.5%;
   z-index: 1;
 }
 
-.svg-el {
-  height: 100%;
-  left: 0;
-  position: absolute;
-  top: 0;
-  transform-origin: center right;
-  width: 100%;
-}
-
-.other-section {
-  align-items: center;
-  background: transparent;
-  display: flex;
-  height: 100%;
-  justify-content: center;
-  position: relative;
-  transform: translateY(0);
-  width: 100%;
+.hidden-section {
+  height: 100vh;
 }

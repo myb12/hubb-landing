@@ -1,17 +1,76 @@
-import React from "react";
-import "./home.css";
+import React, { useEffect, useRef, useState } from "react";
+import { useInView } from "react-intersection-observer";
+
+import BannerLeaf from "../../comonents/Svg/BannerLeaf";
 import SmallTree from "../../assets/images/monstera-small.webp";
-import MainSvg from "../../assets/images/svg/For_Device_1920x1080.svg";
+
+import {
+  handlePathAnimation,
+  handleScaleAnimation,
+} from "../../utils/animation";
+
+import "./home.css";
 
 const Home = () => {
+  const { ref: svgWrapperRef, inView: svgInView } = useInView({
+    threshold: 0,
+  });
+
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const [isScrolledUp, setIsScrolledUp] = useState(null);
+  const [scaleTimeoutId, setScaleTimeoutId] = useState(null);
+  const [pathTimeoutId, setPathTimeoutId] = useState(null);
+  const [scaleStart, setScaleStart] = useState(false);
+  const svgRef = useRef();
+
+  useEffect(() => {
+    const onScroll = () => {
+      if (!svgInView) return;
+
+      handlePathAnimation(svgRef, isScrolledUp, scrollPosition);
+      handleScaleAnimation(
+        svgRef,
+        isScrolledUp,
+        scaleTimeoutId,
+        setScaleTimeoutId,
+        pathTimeoutId,
+        setPathTimeoutId,
+        scrollPosition,
+        scaleStart,
+        setScaleStart
+      );
+    };
+
+    window.removeEventListener("scroll", onScroll);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [scrollPosition, isScrolledUp, scaleTimeoutId]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollPos = window.scrollY;
+      setScrollPosition(currentScrollPos);
+
+      setIsScrolledUp(scrollPosition > currentScrollPos);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [scrollPosition, isScrolledUp]);
+
   return (
-    <div>
-      <div className="main">
-        <img src={MainSvg} alt="" className="svg-el" />
-        <div className="leaf-text">
+    <div id="scrollContainer">
+      <div className="hero-section">
+        <BannerLeaf svgRef={svgRef} />
+        <div className="leaf-text" ref={svgWrapperRef}>
           <img src={SmallTree} alt="" className="small-leaf" />
         </div>
       </div>
+
+      <div className="hidden-section"></div>
 
       <div className="other-section">
         <p>
