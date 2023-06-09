@@ -38,6 +38,7 @@
   text-align: right;
   margin-top: 16px;
   line-height: 1.6;
+  transition: 1s all ease-out;
 }
 
 .small-leaf {

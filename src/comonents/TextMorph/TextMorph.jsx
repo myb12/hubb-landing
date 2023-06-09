@@ -4,7 +4,7 @@ import { morphAnimation } from "../../utils/animation";
 
 import "./text-morph.css";
 
-const TextMorph = () => {
+const TextMorph = ({ transform }) => {
   const text1Ref = useRef(null);
   const text2Ref = useRef(null);
 
@@ -13,7 +13,12 @@ const TextMorph = () => {
   }, []);
 
   return (
-    <>
+    <div
+      style={{
+        transform: transform,
+        transition: ".3s all ease-out",
+      }}
+    >
       <div id="morph-container">
         <span id="text1" ref={text1Ref}></span>
         <span id="text2" ref={text2Ref}></span>
@@ -30,7 +35,7 @@ const TextMorph = () => {
           </filter>
         </defs>
       </svg>
-    </>
+    </div>
   );
 };
 

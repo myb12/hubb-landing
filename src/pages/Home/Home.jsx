@@ -23,6 +23,7 @@ const Home = () => {
   const [pathTimeoutId, setPathTimeoutId] = useState(null);
   const [scaleStart, setScaleStart] = useState(false);
   const [translateFact, setTranslateFact] = useState();
+  const [textFact, setText] = useState();
   const svgRef = useRef();
 
   useEffect(() => {
@@ -44,6 +45,7 @@ const Home = () => {
 
       setTimeout(() => {
         setTranslateFact(scrollPosition / 1000);
+        setText(scrollPosition / 5);
       }, 1000);
     };
 
@@ -84,8 +86,15 @@ const Home = () => {
 
           <div className="text">
             <h1 className="top-heading">Return to</h1>
-            <TextMorph />
-            <p className="top-desc">
+            <TextMorph
+              transform={`translate3d(-${textFact + 100}%, 0px, 0px)`}
+            />
+            <p
+              className="top-desc"
+              style={{
+                transform: `translate3d(-${textFact + 20}%, 0px, 0px)`,
+              }}
+            >
               Welcome to a tranquil sanctuary, where healing dances with nature,
               <br />
               community radiates warmth, and minds evolve endlessly.
@@ -185,3 +194,24 @@ export default Home;
 //translate3d(-38.1332%, -46.9331%, 0px) scale(1.5867, 1.5867)
 //translate3d(-52.9906%, -65.2192%, 0px) scale(1.8152, 1.8152)
 //translate(-65%, -80%) scale(2, 2)
+
+///////////////
+//translate3d(-2.6231%, 0px, 0px)
+//translate3d(-9.4981%, 0px, 0px)
+//translate3d(-19.428%, 0px, 0px)
+
+////////////////////
+
+//translate3d(-36.5551%, 0px, 0px)
+//translate3d(-26.2604%, 0px, 0px)
+//translate3d(-53.7144%, 0px, 0px)
+
+////////////////////////
+//translate3d(-96.8545%, 0px, 0px)
+//translate3d(-43.022%, 0px, 0px)
+//translate3d(-43.022%, 0px, 0px)
+
+////////
+//translate(-105%, 0px)
+//translate(-110%, 0px)
+//translate(-150%, 0px)

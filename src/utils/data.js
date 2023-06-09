@@ -37,3 +37,13 @@ export const paths = {
     "m1919.72,950.03 c-2.22,5 -2.75,10.01 -3.92,14.58 c0,4.45 0,4.88 0,10.5 c0,10.45 0,16.88 0,20.5 c0,25.45 0,38.88 4,46.5 v-93.92 h0 c0,0 0,0 0,0 Z",
   ],
 };
+
+export const morphTexts = [
+  "Love",
+  "Home",
+  "Community",
+  "Health",
+  "Nature",
+  "Tranquility",
+  "Family",
+];
